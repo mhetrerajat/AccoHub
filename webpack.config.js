@@ -1,11 +1,14 @@
+const path = require('path')
+
 module.exports = {
   entry : [
     'webpack-hot-middleware/client',
     './app.js'
-  ]
+  ],
   output : {
-    path : __dirname,
-    filename : 'app.min.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'app.min.js',
+    publicPath: '/public/'
   },
   devServer :{
     port : 8000,
