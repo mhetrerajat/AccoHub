@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry : [
@@ -10,6 +11,10 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/public/'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   devServer :{
     port : 8000,
     inline : true
