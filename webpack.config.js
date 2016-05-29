@@ -1,5 +1,8 @@
 module.exports = {
-  entry : './app.js',
+  entry : [
+    'webpack-hot-middleware/client',
+    './app.js'
+  ]
   output : {
     path : __dirname,
     filename : 'app.min.js'
