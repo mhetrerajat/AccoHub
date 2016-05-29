@@ -10,8 +10,10 @@ class LikesPanel extends Component{
       sum += parseInt(likeVals[i])
     }
     return(
-    <div>
-      <h4>Total Likes : {sum}</h4>
+    <div id="likes_panel">
+
+      <h4>{sum}</h4>
+      <p>Total Likes</p>
     </div>
   );
   }

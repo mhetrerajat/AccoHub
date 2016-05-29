@@ -14,9 +14,6 @@ class Search extends Component{
       case 'rating':
         return __.sortBy(data, 'rating')
         break;
-      case 'likes':
-        return __.sortBy(data, 'likes')
-        break;
       default:
         return data
     }

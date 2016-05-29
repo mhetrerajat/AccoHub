@@ -12,8 +12,8 @@ class SortByPanel extends Component{
           <h4>Sort By</h4>
             <form name="sortByForm" ref="sortByForm" onSubmit={this.handleSortFilter.bind(this)}>
               <li>
-                <span><input type="radio" name="searchSort" value="likes"/>&nbsp;</span>
-                Likes
+                <span><input type="radio" name="searchSort" value="default"/>&nbsp;</span>
+                Default
               </li>
               <li><span><input type="radio" name="searchSort" value="rating" />&nbsp;</span>Ratings</li>
               <button type="submit">Sort Results</button>

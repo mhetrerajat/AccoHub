@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "26b1ab6e1d2e8f980dcd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7551c98a1e6ea0eb2dbc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24354,10 +24354,10 @@
 	            _react2.default.createElement(
 	              "span",
 	              null,
-	              _react2.default.createElement("input", { type: "radio", name: "searchSort", value: "likes" }),
+	              _react2.default.createElement("input", { type: "radio", name: "searchSort", value: "default" }),
 	              " "
 	            ),
-	            "Likes"
+	            "Default"
 	          ),
 	          _react2.default.createElement(
 	            "li",
@@ -24436,12 +24436,16 @@
 	      }
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { id: 'likes_panel' },
 	        _react2.default.createElement(
 	          'h4',
 	          null,
-	          'Total Likes : ',
 	          sum
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Total Likes'
 	        )
 	      );
 	    }
@@ -24504,9 +24508,6 @@
 	      switch (sortType) {
 	        case 'rating':
 	          return _underscore2.default.sortBy(data, 'rating');
-	          break;
-	        case 'likes':
-	          return _underscore2.default.sortBy(data, 'likes');
 	          break;
 	        default:
 	          return data;
