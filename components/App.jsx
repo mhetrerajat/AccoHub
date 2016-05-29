@@ -22,6 +22,7 @@ class App extends Component{
 
 
 
+  // fetch data from api
   fetchProductList(){
     fetch('https://hackerearth.0x10.info/api/accolite_product?type=json&query=list_product')
     .then((response)=>  response.json())
@@ -31,21 +32,24 @@ class App extends Component{
   }
 
 
+  // update state after initial rendering of page
   componentDidMount(){
     this.fetchProductList()
     //this.setState({tags :  __.uniq(__.flatten(this.state.menu.map((mapItem) => mapItem.tags.map((item) => item.trim()))))})
     //__.pluck(this.state.menu, "name").map((item) => initLikeList(item))
   }
 
+  //update app state with search term
   handleSearchInput(searchTerm){
     this.setState({searchText : searchTerm})
   }
 
+  // update state type of sorting applied on data
   handleSortFilter(sortType){
     this.setState({sortType : sortType})
   }
 
-
+  // update like counts
   handleLikeToggle(name, count, type){
     switch (type) {
       case 1:
