@@ -15,7 +15,8 @@ class App extends Component{
       isFetched : false,
       searchText : '',
       sortType : '',
-      likes : {}
+      likes : {},
+      error : ""
     }
   }
 
@@ -28,7 +29,7 @@ class App extends Component{
     .then((response)=>  response.json())
     .then((responseData) => {this.setState({menu : responseData.menu})})
     .then(this.setState({ isFetched : !this.state.isFetched }))
-    .catch((error) => console.error('Error fetching', error))
+    .catch((error) => {this.setState({  error : "Seems like API is down. Failed to fetch data."})})
   }
 
 
@@ -96,7 +97,8 @@ class App extends Component{
               searchText={this.state.searchText}
               sortType={this.state.sortType}
               handleLikeToggleCallback={this.handleLikeToggle.bind(this)}
-              likes={this.state.likes}/>
+              likes={this.state.likes}
+              error={this.state.error}/>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ class Search extends Component{
   }
   render(){
     // props
-    const { sortType, menu, likes } = this.props;
+    const { sortType, menu, likes, error } = this.props;
 
     // var declare
     let countResult = this.props.menu.length;
@@ -35,7 +35,12 @@ class Search extends Component{
 
     //check if data is fetched or not
     if(this.props.isFetched){
-      renderContent = <ResultList menu={this.sortByType(menu,sortType)} handleLikeToggleCallback={this.props.handleLikeToggleCallback.bind(this)} likes={likes}/>
+      if(error.length){
+        renderContent = <ResultList menu={this.sortByType(menu,sortType)} handleLikeToggleCallback={this.props.handleLikeToggleCallback.bind(this)} likes={likes}/>
+      }else{
+        renderContent = error
+      }
+
     }else{
       renderContent = <Loading/>
     }
