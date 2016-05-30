@@ -38,7 +38,7 @@ class Search extends Component{
       if(!error.length){
         renderContent = <ResultList menu={this.sortByType(menu,sortType)} handleLikeToggleCallback={this.props.handleLikeToggleCallback.bind(this)} likes={likes}/>
       }else{
-        renderContent = error
+        renderContent = <Error error={error}/>
       }
 
     }else{
@@ -97,6 +97,14 @@ class Loading extends Component{
         <img src="../images/ball.gif"/>
         <h4>Loading...</h4>
       </div>
+    );
+  }
+}
+
+class Error extends Component{
+  render(){
+    return(
+      <p>{this.props.error}</p>
     );
   }
 }

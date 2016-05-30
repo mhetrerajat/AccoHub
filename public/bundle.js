@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a8355330e586edbbb775"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "75eef081e0f2adbe1574"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24564,7 +24564,7 @@
 	        if (!error.length) {
 	          renderContent = _react2.default.createElement(ResultList, { menu: this.sortByType(menu, sortType), handleLikeToggleCallback: this.props.handleLikeToggleCallback.bind(this), likes: likes });
 	        } else {
-	          renderContent = error;
+	          renderContent = _react2.default.createElement(Error, { error: error });
 	        }
 	      } else {
 	        renderContent = _react2.default.createElement(Loading, null);
@@ -24674,6 +24674,29 @@
 	  }]);
 
 	  return Loading;
+	}(_react.Component);
+
+	var Error = function (_Component4) {
+	  _inherits(Error, _Component4);
+
+	  function Error() {
+	    _classCallCheck(this, Error);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Error).apply(this, arguments));
+	  }
+
+	  _createClass(Error, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'p',
+	        null,
+	        this.props.error
+	      );
+	    }
+	  }]);
+
+	  return Error;
 	}(_react.Component);
 
 	exports.default = Search;
