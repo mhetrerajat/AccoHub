@@ -35,7 +35,7 @@ class Search extends Component{
 
     //check if data is fetched or not
     if(this.props.isFetched){
-      if(error.length){
+      if(!error.length){
         renderContent = <ResultList menu={this.sortByType(menu,sortType)} handleLikeToggleCallback={this.props.handleLikeToggleCallback.bind(this)} likes={likes}/>
       }else{
         renderContent = error
