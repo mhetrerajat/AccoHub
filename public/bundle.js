@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7551c98a1e6ea0eb2dbc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a8355330e586edbbb775"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22054,10 +22054,14 @@
 	      isFetched: false,
 	      searchText: '',
 	      sortType: '',
-	      likes: {}
+	      likes: {},
+	      error: ""
 	    };
 	    return _this;
 	  }
+
+	  // fetch data from api
+
 
 	  _createClass(App, [{
 	    key: 'fetchProductList',
@@ -22069,9 +22073,12 @@
 	      }).then(function (responseData) {
 	        _this2.setState({ menu: responseData.menu });
 	      }).then(this.setState({ isFetched: !this.state.isFetched })).catch(function (error) {
-	        return console.error('Error fetching', error);
+	        _this2.setState({ error: "Seems like API is down. Failed to fetch data." });
 	      });
 	    }
+
+	    // update state after initial rendering of page
+
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
@@ -22079,16 +22086,25 @@
 	      //this.setState({tags :  __.uniq(__.flatten(this.state.menu.map((mapItem) => mapItem.tags.map((item) => item.trim()))))})
 	      //__.pluck(this.state.menu, "name").map((item) => initLikeList(item))
 	    }
+
+	    //update app state with search term
+
 	  }, {
 	    key: 'handleSearchInput',
 	    value: function handleSearchInput(searchTerm) {
 	      this.setState({ searchText: searchTerm });
 	    }
+
+	    // update state type of sorting applied on data
+
 	  }, {
 	    key: 'handleSortFilter',
 	    value: function handleSortFilter(sortType) {
 	      this.setState({ sortType: sortType });
 	    }
+
+	    // update like counts
+
 	  }, {
 	    key: 'handleLikeToggle',
 	    value: function handleLikeToggle(name, count, type) {
@@ -22152,7 +22168,8 @@
 	                searchText: this.state.searchText,
 	                sortType: this.state.sortType,
 	                handleLikeToggleCallback: this.handleLikeToggle.bind(this),
-	                likes: this.state.likes })
+	                likes: this.state.likes,
+	                error: this.state.error })
 	            )
 	          )
 	        )
@@ -24523,6 +24540,7 @@
 	      var sortType = _props.sortType;
 	      var menu = _props.menu;
 	      var likes = _props.likes;
+	      var error = _props.error;
 
 	      // var declare
 
@@ -24543,7 +24561,11 @@
 
 	      //check if data is fetched or not
 	      if (this.props.isFetched) {
-	        renderContent = _react2.default.createElement(ResultList, { menu: this.sortByType(menu, sortType), handleLikeToggleCallback: this.props.handleLikeToggleCallback.bind(this), likes: likes });
+	        if (!error.length) {
+	          renderContent = _react2.default.createElement(ResultList, { menu: this.sortByType(menu, sortType), handleLikeToggleCallback: this.props.handleLikeToggleCallback.bind(this), likes: likes });
+	        } else {
+	          renderContent = error;
+	        }
 	      } else {
 	        renderContent = _react2.default.createElement(Loading, null);
 	      }
